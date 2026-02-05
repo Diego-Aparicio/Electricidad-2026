@@ -1,1 +1,76 @@
+Uso de una Pantalla LCD I2C en Tinkercad
+
+En este informe se va a explicar como se uso un LCD con interfaz I2C (comúnmente llamada LCD I2C) utilizando la plataforma de simulación Tinkercad Circuits y una placa Arduino Uno. 
+
+Objetivo:
+El objetivo de este proyecto es:
+•	Comprender el funcionamiento de una pantalla LCD I2C.
+•	Realizar correctamente las conexiones entre la LCD y Arduino Uno en Tinkercad.
+•	Programar un código básico que muestre un mensaje en la pantalla.
+
+Materiales:
+•	Computador con acceso a internet.
+•	Plataforma Tinkercad Circuits.
+•	Arduino Uno.
+•	Pantalla LCD 16x2 con módulo I2C.
+•	Cables de conexión (jumpers).
+
+Marco teórico:
+
+Pantalla LCD 16x2
+Una pantalla LCD 16x2 es un dispositivo de salida que permite mostrar texto alfanumérico en dos filas de hasta 16 caracteres cada una. Es ampliamente utilizada en proyectos con microcontroladores.
+
+
+
+Comunicación I2C
+I2C (Inter-Integrated Circuit) es un protocolo de comunicación serial que utiliza únicamente dos líneas:
+•	SDA (Serial Data): línea de datos.
+•	SCL (Serial Clock): línea de reloj.
+Gracias a este protocolo, la LCD puede comunicarse con Arduino usando solo dos pines (exceptuando GND y VCC), en lugar de los 6 u 8 pines que requiere una LCD tradicional.
+Arduino Uno
+Arduino Uno es una placa de desarrollo basada en el microcontrolador ATmega328P. En esta placa, los pines I2C son:
+•	A4 → SDA
+•	A5 → SCL
+Conexión del circuito
+Las conexiones realizadas en Tinkercad son las siguientes:
+Pantalla LCD I2C	Arduino Uno
+VCC-5V
+GND-GND
+SDA-A4
+SCL-A5
+
+Programación
+Para el funcionamiento de la pantalla se utilizan las librerías Wire.h y LiquidCrystal_I2C.h. El siguiente código permite mostrar el mensaje “Hola mundo” en la pantalla LCD:
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+// Dirección I2C 0x27, pantalla 16 columnas x 2 filas
+LiquidCrystal_I2C lcd(0x27, 16, 4);
+
+void setup() {
+  lcd.init();        // Inicializa la pantalla
+  lcd.backlight();   // Enciende la luz de fondo
+  lcd.setCursor(0, 0); // Columna 0, fila 0
+  lcd.print("Hola mundo");
+}
+
+void loop() {
+  // No se necesita nada aquí
+}
+
+
+Funcionamiento:
+Al iniciar la simulación en Tinkercad:
+1.	Arduino inicializa la comunicación I2C.
+2.	La pantalla LCD se configura con 16 columnas y 2 filas.
+3.	Se enciende la retroiluminación.
+4.	Se muestra el mensaje “Hola mundo” en la primera fila de la pantalla.
+
+Resultados:
+El circuito funciona correctamente, mostrando el texto programado en la pantalla LCD. Esto confirma que las conexiones y el código son adecuados para la comunicación I2C en Tinkercad.
+
+Conclusión:
+El uso de una pantalla LCD I2C simplifica notablemente el diseño de circuitos con Arduino, ya que reduce el número de pines necesarios y facilita la programación. Tinkercad es una herramienta útil para simular este tipo de proyectos antes de implementarlos físicamente.
+•	Programación
+•	Para el funcionamiento de la pantalla se utilizan las librerías Wire.h y LiquidCrystal_I2C.h. El siguiente código permite mostrar el mensaje “Hola mundo” en la pantalla LCD:
 
