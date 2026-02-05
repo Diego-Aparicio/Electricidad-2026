@@ -74,3 +74,4 @@ El uso de una pantalla LCD I2C simplifica notablemente el diseño de circuitos c
 •	Programación
 •	Para el funcionamiento de la pantalla se utilizan las librerías Wire.h y LiquidCrystal_I2C.h. El siguiente código permite mostrar el mensaje “Hola mundo” en la pantalla LCD:
 
+Link de Tinkercad: https://www.tinkercad.com/things/eGIDsTOa7jn-smooth-uusam/editel
